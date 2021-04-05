@@ -1,0 +1,21 @@
+18:29:21 **** Incremental Build of configuration Debug for project asm_hypotenuse ****
+make all 
+Building file: ../src/asm.s
+Invoking: MCU Assembler
+arm-none-eabi-gcc -c -x assembler-with-cpp -D__REDLIB__  -DDEBUG -D__CODE_RED -g3 -mcpu=cortex-m3 -mthumb -o "src/asm.o" "../src/asm.s"
+Finished building: ../src/asm.s
+ 
+Building target: asm_hypotenuse.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Tbss 0x10004000 -Xlinker -Map=asm_hypotenuse.map -Xlinker --gc-sections -mcpu=cortex-m3 -mthumb -T "asm_hypotenuse_Debug.ld" -o "asm_hypotenuse.axf"  ./src/asm.o   
+Finished building target: asm_hypotenuse.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size asm_hypotenuse.axf; # arm-none-eabi-objcopy -O binary asm_hypotenuse.axf asm_hypotenuse.bin ; checksum -p LPC1769 -d asm_hypotenuse.bin;
+   text	   data	    bss	    dec	    hex	filename
+    100	      0	     12	    112	     70	asm_hypotenuse.axf
+ 
+
+18:29:21 Build Finished (took 571ms)
+
