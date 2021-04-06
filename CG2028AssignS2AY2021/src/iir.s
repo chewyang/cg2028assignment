@@ -30,7 +30,6 @@ iir:
 	LDR R5, [R2]; @R5 = value of a[0]
 
 	MUL R6, R3, R4; @x_n * b[0] and store it in R6
-	UDIV R6, R6, R5; @x_n * b[0] / a[0], now R6 = y_n
 
 	LDR R7, =y_store; @loads address at y_store into R3 0x1000 0000
 	LDR R8, =x_store; @loads address at x_store into R4 0x1000 0030
@@ -45,12 +44,11 @@ loop_1:
 	MUL R9, R4, R9; @ b[] * x_store
 	MUL R10, R11, R10; @ a[] *y_store
 	SUB R9, R9, R10;
-	SDIV R10, R9, R5;
-	ADD R6, R6, R10; @y_n += (b[j+1] * x_store[j] - a[j+1] * y_store[j]) / a[0];
+	ADD R6, R6, R9; @y_n += (b[j+1] * x_store[j] - a[j+1] * y_store[j]);
 
 	SUBS R12, #1; @reduce the counter
 	BNE loop_1;
-
+	SDIV R6, R6, R5; @divide all at once by a[0] after first loop
 
 	SUB R0, R0, #1; @ counter = 4-1 = 3
 	SUB R12, R0, #1; @ R12 = 3-1 = 2

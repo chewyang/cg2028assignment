@@ -457,17 +457,17 @@
  377              	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\Razer\AppData\Local\Temp\ccjDpTMc.s:19     .rodata:00000000 $d
-C:\Users\Razer\AppData\Local\Temp\ccjDpTMc.s:20     .rodata:00000000 .LC1
-C:\Users\Razer\AppData\Local\Temp\ccjDpTMc.s:23     .rodata:0000001c .LC2
-C:\Users\Razer\AppData\Local\Temp\ccjDpTMc.s:26     .rodata:00000038 .LC0
-C:\Users\Razer\AppData\Local\Temp\ccjDpTMc.s:40     .text.main:00000000 $t
-C:\Users\Razer\AppData\Local\Temp\ccjDpTMc.s:45     .text.main:00000000 main
-C:\Users\Razer\AppData\Local\Temp\ccjDpTMc.s:229    .text.iir_c:00000000 iir_c
-C:\Users\Razer\AppData\Local\Temp\ccjDpTMc.s:224    .text.iir_c:00000000 $t
-C:\Users\Razer\AppData\Local\Temp\ccjDpTMc.s:371    .bss:00000000 x_store.3834
-C:\Users\Razer\AppData\Local\Temp\ccjDpTMc.s:374    .bss:00000028 y_store.3835
-C:\Users\Razer\AppData\Local\Temp\ccjDpTMc.s:370    .bss:00000000 $d
+C:\Users\Razer\AppData\Local\Temp\ccJJJwui.s:19     .rodata:00000000 $d
+C:\Users\Razer\AppData\Local\Temp\ccJJJwui.s:20     .rodata:00000000 .LC1
+C:\Users\Razer\AppData\Local\Temp\ccJJJwui.s:23     .rodata:0000001c .LC2
+C:\Users\Razer\AppData\Local\Temp\ccJJJwui.s:26     .rodata:00000038 .LC0
+C:\Users\Razer\AppData\Local\Temp\ccJJJwui.s:40     .text.main:00000000 $t
+C:\Users\Razer\AppData\Local\Temp\ccJJJwui.s:45     .text.main:00000000 main
+C:\Users\Razer\AppData\Local\Temp\ccJJJwui.s:229    .text.iir_c:00000000 iir_c
+C:\Users\Razer\AppData\Local\Temp\ccJJJwui.s:224    .text.iir_c:00000000 $t
+C:\Users\Razer\AppData\Local\Temp\ccJJJwui.s:371    .bss:00000000 x_store.3834
+C:\Users\Razer\AppData\Local\Temp\ccJJJwui.s:374    .bss:00000028 y_store.3835
+C:\Users\Razer\AppData\Local\Temp\ccJJJwui.s:370    .bss:00000000 $d
                      .debug_frame:00000010 $d
 
 UNDEFINED SYMBOLS

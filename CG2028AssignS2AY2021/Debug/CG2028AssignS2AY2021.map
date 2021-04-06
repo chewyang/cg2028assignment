@@ -461,26 +461,27 @@ END GROUP
                 0x000001a4                UART3_IRQHandler
                 0x000001a4                MCPWM_IRQHandler
                 0x000001a4                ENET_IRQHandler
- .text          0x000001ac       0x9c ./src/iir.o
+ .text          0x000001ac       0x98 ./src/iir.o
                 0x000001ac                iir
- .text.main     0x00000248      0x1dc ./src/main.o
-                0x00000248                main
- .text.iir_c    0x00000424      0x128 ./src/main.o
-                0x00000424                iir_c
+ .text.main     0x00000244      0x1dc ./src/main.o
+                0x00000244                main
+ .text.iir_c    0x00000420      0x128 ./src/main.o
+                0x00000420                iir_c
  .text.SystemInit
-                0x0000054c      0x22c C:\Users\Razer\Documents\LPCXpresso_6.1.4_194\workspace1\Lib_CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
-                0x0000054c                SystemInit
- .text.__main   0x00000778       0x14 c:/nxp/lpcxpresso_6.1.4_194/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.6.2/../../../../arm-none-eabi/lib/armv7-m\libcr_semihost.a(_cr__main.o)
-                0x00000778                __CR_SEMIHOST
-                0x00000778                __main
+                0x00000548      0x22c C:\Users\Razer\Documents\LPCXpresso_6.1.4_194\workspace1\Lib_CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
+                0x00000548                SystemInit
+ .text.__main   0x00000774       0x14 c:/nxp/lpcxpresso_6.1.4_194/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.6.2/../../../../arm-none-eabi/lib/armv7-m\libcr_semihost.a(_cr__main.o)
+                0x00000774                __CR_SEMIHOST
+                0x00000774                __main
  .text.lose_trailing_zeros
-                0x0000078c       0x1e c:/nxp/lpcxpresso_6.1.4_194/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.6.2/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(fpprintf.o)
+                0x00000788       0x1e c:/nxp/lpcxpresso_6.1.4_194/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.6.2/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(fpprintf.o)
  .text.fp_round
-                0x000007aa       0x54 c:/nxp/lpcxpresso_6.1.4_194/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.6.2/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(fpprintf.o)
+                0x000007a6       0x54 c:/nxp/lpcxpresso_6.1.4_194/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.6.2/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(fpprintf.o)
  .text.pr_dec.constprop.1
-                0x000007fe       0x22 c:/nxp/lpcxpresso_6.1.4_194/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.6.2/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(fpprintf.o)
- .text.sprintf  0x00000820       0x70 c:/nxp/lpcxpresso_6.1.4_194/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.6.2/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(fpprintf.o)
-                0x00000820                sprintf
+                0x000007fa       0x22 c:/nxp/lpcxpresso_6.1.4_194/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.6.2/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(fpprintf.o)
+ .text.sprintf  0x0000081c       0x70 c:/nxp/lpcxpresso_6.1.4_194/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.6.2/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(fpprintf.o)
+                0x0000081c                sprintf
+ *fill*         0x0000088c        0x4 00
  .text.fp_display
                 0x00000890      0x908 c:/nxp/lpcxpresso_6.1.4_194/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.6.2/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(fpprintf.o)
  .text.vsnprintf
@@ -734,11 +735,11 @@ OUTPUT(CG2028AssignS2AY2021.axf elf32-littlearm)
  .debug_ranges  0x00000060       0x18 ./src/main.o
  .debug_ranges  0x00000078       0x18 C:\Users\Razer\Documents\LPCXpresso_6.1.4_194\workspace1\Lib_CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
 
-.debug_line     0x00000000      0xbdf
+.debug_line     0x00000000      0xbde
  .debug_line    0x00000000      0x462 ./src/cr_startup_lpc17.o
- .debug_line    0x00000462       0x67 ./src/iir.o
- .debug_line    0x000004c9      0x303 ./src/main.o
- .debug_line    0x000007cc      0x413 C:\Users\Razer\Documents\LPCXpresso_6.1.4_194\workspace1\Lib_CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
+ .debug_line    0x00000462       0x66 ./src/iir.o
+ .debug_line    0x000004c8      0x303 ./src/main.o
+ .debug_line    0x000007cb      0x413 C:\Users\Razer\Documents\LPCXpresso_6.1.4_194\workspace1\Lib_CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
 
 .debug_macinfo  0x00000000     0xec89
  .debug_macinfo
