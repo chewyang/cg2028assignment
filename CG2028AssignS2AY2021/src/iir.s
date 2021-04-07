@@ -39,6 +39,7 @@ iir:
 
   LDR R8, =y_store; @loads address at y_store into R3 0x1000 0000
   LDR R9, =x_store; @loads address at x_store into R4 0x1000 0030
+  PUSH {R8-R9};
 
 loop_1:
   LDR R10, [R2, #4]!; @ R10 = a[1++] - pre-indexed addressing 120
@@ -57,25 +58,22 @@ loop_1:
   SUB R0, R0, #1; @ counter = 4-1 = 3
   SUB R4, R0, #1; @ R12 = 3-1 = 2
 
-  LDR R8, =y_store; @reset address back to y_store[0]
-  LDR R9, =x_store; @reset address back to x_store[0]
+  POP {R8-R9};
+  MOV R5, #4; @const 4 for making it easier to point to array index
+
+  MLA R11, R4, R5, R8; @ helps to point to array index with the counter in R11 and adds to current address of R8
+  MLA R12, R4, R5, R9; @ helps to point to array index with the counter in R12 and adds to current address of R9
+  @registers that aren't used anymore : R5, R6
 
 loop_2:
 
   @registers that aren't used anymore : R5, R6, R10, R11, R12
 
-  MOV R5, #4; @const 4 for making it easier to point to array index
+  LDR R5, [R11], #-4; @y_store[j-1]
+  LDR R6, [R12], #-4; @x-store[j-1]
 
-  MLA R11, R4, R5, R8; @ helps to point to array index with the counter in R11 and adds to current address of R8
-  MLA R12, R4, R5, R9; @ helps to point to array index with the counter in R12 and adds to current address of R9
-
-  @registers that aren't used anymore : R5, R6
-
-  LDR R5, [R11]; @y_store[j-1]
-  LDR R6, [R12]; @x-store[j-1]
-
-  STR R5, [R11, #4]; @ y_store[j] = y_store[j-1];
-  STR R6, [R12, #4]; @ x_store[j] = x_store[j-1];
+  STR R5, [R11, #8]; @ y_store[j] = y_store[j-1];
+  STR R6, [R12, #8]; @ x_store[j] = x_store[j-1];
 
   SUB R4, #1; @ reduce array index
   SUBS R0, #1; @ reduce counter
@@ -87,7 +85,7 @@ loop_2:
   MOV R5, #100;
   SDIV R0, R7, R5; @y_n /= 100; // scaling down
 
-  POP {R4-R12}
+  POP {R4-R12};
 
 
 @ parameter registers need not be saved.
