@@ -47,10 +47,8 @@ loop_1:
   LDR R12, [R9], #4; @ R11 = x_store[1++]
   LDR R5, [R1, #4]!; @ R4 = b[1++] - pre-indexed addressing 250
 
-  MUL R12, R5, R12; @ b[] * x_store
-  MUL R11, R10, R11; @ a[] *y_store
-  SUB R11, R12, R11; @ value at the end to add into y_n
-  ADD R7, R7, R11; @y_n += (b[j+1] * x_store[j] - a[j+1] * y_store[j]);
+  MLA R7, R5, R12, R7; @y_n += b[j+1] * x_store[j]
+  MLS R7, R10, R11, R7; @y_n -= a[j+1] * y_store[j]
 
   SUBS R4, #1; @reduce the counter
   BNE loop_1;
