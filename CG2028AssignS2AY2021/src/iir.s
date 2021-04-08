@@ -48,8 +48,8 @@ loop_1:
   LDR R10, [R8], #4; @ R10 = y_store[1++]
   LDR R11, [R9], #4; @ R11 = x_store[1++]
   
-  MLA R5, R6, R11, R7; @y_n += b[j+1] * x_store[j]
-  MLS R5, R7, R10, R7; @y_n -= a[j+1] * y_store[j]
+  MLA R5, R6, R11, R5; @y_n += b[j+1] * x_store[j]
+  MLS R5, R7, R10, R5; @y_n -= a[j+1] * y_store[j]
 
   SUBS R4, #1; @reduce the counter
   BNE loop_1;
