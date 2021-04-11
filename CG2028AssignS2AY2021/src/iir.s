@@ -26,64 +26,63 @@
 
 iir:
 
-  @ PUSH / save (only those) registers which are modified by your function
   PUSH {R4-R12};
 
-  ADD R4, R0, #1; @R4 = N+1
+  ADD R4, R0, #1; @0x02804001
 
-  LDR R6, [R1];@, #4; @R4 = value of b[0]
-  LDR R7, [R2]; @R5 = value of a[0]
+  LDR R6, [R1]; @0x05116000
+  LDR R7, [R2]; @0x05127000
 
-  MUL R5, R3, R6; @x_n * b[0] and store it in R6 (used for value for y_n)
+  MUL R5, R3, R6; @0x00005613
 
-  LDR R8, =y_store; @loads address at y_store into R3 0x1000 0000
-  LDR R9, =x_store; @loads address at x_store into R4 0x1000 0030
+  LDR R8, =y_store; 
+  LDR R9, =x_store;
 
-  PUSH {R7-R9}; @push values of R7-R9 as we only need it later so we can reuse the registers
+  PUSH {R7-R9};
 
 loop_1:
-  LDR R6, [R1, #4]!; @ R4 = b[1++] - pre-indexed addressing 250
-  LDR R7, [R2, #4]!; @ R10 = a[1++] - pre-indexed addressing 120
+  LDR R6, [R1, #4]!; @0x05916004
+  LDR R7, [R2, #4]!; @0x05927004
 
-  LDR R10, [R8], #4; @ R10 = y_store[1++]
-  LDR R11, [R9], #4; @ R11 = x_store[1++]
+  LDR R10, [R8], #4; @0x0498A004
+  LDR R11, [R9], #4; @0x0499B004
   
-  MLA R5, R6, R11, R5; @y_n += b[j+1] * x_store[j]
-  MLS R5, R7, R10, R5; @y_n -= a[j+1] * y_store[j]
+  MLA R5, R6, R11, R5; @0x00255B17
+  MLS R5, R7, R10, R5;
 
-  SUBS R4, #1; @reduce the counter
-  BNE loop_1;
+  SUBS R4, R4, #1; @0x02544001
+  BNE loop_1; @0x18000020
 
-  POP {R7-R9}; @getting back the values for a[0], address for y_store and x_store
+  POP {R7-R9};
 
-  SDIV R5, R5, R7; @divide all at once by a[0] after first loop
+  SDIV R5, R5, R7;
+
   @end of first phase, preparing for second phase
-  SUB R0, R0, #1; @ changing N counter to N-1 times
-  SUB R4, R0, #1; @ changing N+1 counter to N times, to be used to get to array index[j-1]
 
-  @registers not used anymore from first phase: R6,R7,R10,R11,R12;
-  MOV R6, #4; @const 4 for making it easier to point to array index
+  SUB R0, R0, #1; @0x02400001
+  SUB R4, R0, #1; @02404001
 
-  MLA R10, R4, R6, R8; @ helps to point to array index [j-1] with the counter in R11 and adds to current address of R8
-  MLA R11, R4, R6, R9; @ helps to point to array index [j-1] with the counter in R12 and adds to current address of R9
+  MOV R6, #4; @0x03A06004
+  MLA R10, R4, R6, R8; @0x0028A614
+  MLA R11, R4, R6, R9; @0x0029B614
 
 loop_2:
-  LDR R6, [R10], #-4; @y_store[j-1]
-  LDR R7, [R11], #-4; @x-store[j-1]
+  LDR R6, [R10], #-4; @0x041A6004
+  LDR R7, [R11], #-4; @0x041B7004
 
-  STR R6, [R10, #8]; @ y_store[j] = y_store[j-1];
-  STR R7, [R11, #8]; @ x_store[j] = x_store[j-1];
+  STR R6, [R10, #8]; @0x058A6008
+  STR R7, [R11, #8]; @0x058B7008
 
-  SUBS R0, #1; @ reduce counter
-  BNE loop_2;
+  SUBS R0,R0, #1; @0x02500001
+  BNE loop_2; @0x18000018
 
-  STR R5, [R8]; @ y_store[0] = y_n;
-  STR R3, [R9]; @ x_store[0] = x_n;
+  STR R5, [R8]; @0x05885000
+  STR R3, [R9]; @0x05893000
 
-  MOV R6, #100;
-  SDIV R0, R5, R6; @y_n /= 100; // scaling down, assigned to R0 because of return
+  MOV R6, #100; @0x03A06064
+  SDIV R0, R5, R6;
 
-  POP {R4-R12}; @popping back all register values before method call
+  POP {R4-R12};
 
 
 @ parameter registers need not be saved.
@@ -103,5 +102,5 @@ loop_2:
 
 const4:
   .word 2
-.lcomm y_store 4*11
-.lcomm x_store 4*11
+.lcomm y_store 4*N_MAX
+.lcomm x_store 4*N_MAX
